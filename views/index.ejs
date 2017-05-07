@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html ng-app="form_validation">
+
+<head>
+  <title>form-validation</title>
+  <meta charset="utf-8">
+  <base href="/" />
+  <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/ngApp/css/site.css"/>
+</head>
+
+<body ng-controller = "CarController as car">
+ <form name="carForm" novalidate ng-submit="car.add()">
+   <div>
+     <label>
+       Model:
+       <input name="model" ng-model="car.model" type="text" ng-required = "true"/>
+       <span ng-show="carForm.model.$touched && carForm.model.$error.required" class="error">
+      Car Model is required.
+       </span>
+     </label>
+   </div>
+   <div>
+
+   <label>
+     Price:
+     <input name="price" ng-model="car.price" type="number" ng-required="true"/>
+     <span ng-show="carForm.price.$touched && carForm.price.$error.required" class="error">
+     Car price is required.
+     </span>
+     <span ng-show="carForm.price.$touched && carForm.price.$error.number" class="error">
+     Car price must be a number.
+     </span>
+   </label>
+  </div>
+  <div>
+    <input type="submit" value="Add" ng-disabled="car.form.$invalid"/>
+  </div>
+ </form>
+
+
+  <script src="/bower_components/angular/angular.min.js"></script>
+  <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <script src="/bower_components/angular-resource/angular-resource.min.js"></script>
+  <script src="/bower_components/angular-animate/angular-animate.min.js"></script>
+  <script src="/bower_components/angular-touch/angular-touch.min.js"></script>
+  <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+
+  <script src="/ngApp/app.js"></script>
+  <script src="/ngApp/controllers/controllers.js"></script>
+  <script src="/ngApp/services/services.js"></script>
+
+</body>
+
+</html>
